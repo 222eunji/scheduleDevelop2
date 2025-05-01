@@ -7,6 +7,7 @@ import com.example.scheduledevelop2.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,8 +30,17 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public List<ScheduleResponseDto.GetAll> getAllSchedule() {
 
+//        boolean exists = scheduleRepository.count() == 0;
+        // count 말고 isnotnull과 같이 존재 여부만 확인하고 싶다.
+        // TODO: 0일때 조회 목록 없음 예외처리하기
 
+        List<Schedule> schedules = scheduleRepository.findAll();
+        List<ScheduleResponseDto.GetAll> response =  new ArrayList<>();
 
-        return List.of();
+        for (Schedule sche : schedules) {
+            response.add(new ScheduleResponseDto.GetAll(sche.getId(),sche.getWriterId(), sche.getName(), sche.getCommentCount()));
+        }
+
+        return response;
     }
 }

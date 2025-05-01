@@ -19,6 +19,9 @@ public class Schedule extends BaseEntity {
     private Long id;
 
     @Column(nullable = false)
+    private Long writerId;
+
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false, columnDefinition = "TEXT")
@@ -28,6 +31,7 @@ public class Schedule extends BaseEntity {
     private Long commentCount;
 
     public Schedule(ScheduleRequestDto.Create dto) {
+        this.writerId = dto.getWriterId();
         this.name = dto.getName();
         this.content = dto.getContent();
     }
