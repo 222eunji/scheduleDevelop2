@@ -1,14 +1,17 @@
 package com.example.scheduledevelop2.schedule.entity;
 
 import com.example.scheduledevelop2.common.BaseEntity;
+import com.example.scheduledevelop2.schedule.dto.ScheduleRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@DynamicInsert
 @Table(name = "schedules")
 public class Schedule extends BaseEntity {
 
@@ -23,5 +26,11 @@ public class Schedule extends BaseEntity {
 
     @ColumnDefault("0")
     private Long commentCount;
+
+    public Schedule(ScheduleRequestDto.Create dto) {
+        this.name = dto.getName();
+        this.content = dto.getContent();
+    }
+
 
 }

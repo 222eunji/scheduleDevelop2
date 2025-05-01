@@ -16,7 +16,16 @@ public class ScheduleResponseDto {
 
     @Getter
     @AllArgsConstructor
-    public static class getAll{
+    public static class Create{
+
+        private final String message;
+        private final Long scheduleId;
+
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public static class GetAll{
 
         private final Long scheduleId;
         private final Long writerId;
@@ -27,7 +36,7 @@ public class ScheduleResponseDto {
 
     @Getter
     @AllArgsConstructor
-    public static class getById{
+    public static class GetById{
 
         private final Long scheduleId;
         private final Long writerId;
