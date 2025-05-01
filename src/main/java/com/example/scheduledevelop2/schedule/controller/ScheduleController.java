@@ -7,10 +7,9 @@ import com.example.scheduledevelop2.schedule.service.ScheduleServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +26,15 @@ public class ScheduleController {
     public ResponseEntity<ScheduleResponseDto.Create> createSchedule(@RequestBody ScheduleRequestDto.Create dto) {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(scheduleService.createSchedule(dto));
+    }
+
+    /**
+     * 전체 일정 조회
+     */
+    @GetMapping
+    public ResponseEntity<List<ScheduleResponseDto.GetAll>> getAllSchedule() {
+
+        return ResponseEntity.status(HttpStatus.OK).body(scheduleService.getAllSchedule());
     }
 
 
