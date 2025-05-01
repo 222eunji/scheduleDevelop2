@@ -1,5 +1,6 @@
 package com.example.scheduledevelop2.schedule.entity;
 
+import com.example.scheduledevelop2.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Getter
 @NoArgsConstructor
 @Table(name = "schedules")
-public class Schedule {
+public class Schedule extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
