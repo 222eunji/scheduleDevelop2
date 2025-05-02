@@ -1,5 +1,6 @@
 package com.example.scheduledevelop2.schedule.service;
 
+import com.example.scheduledevelop2.comment.repository.CommentRepository;
 import com.example.scheduledevelop2.schedule.dto.ScheduleRequestDto;
 import com.example.scheduledevelop2.schedule.dto.ScheduleResponseDto;
 import com.example.scheduledevelop2.schedule.entity.Schedule;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ScheduleServiceImpl implements ScheduleService {
 
     public final ScheduleRepository scheduleRepository;
+    public final CommentRepository commentRepository;
 
     // 일정 생성
     @Override
@@ -39,7 +41,8 @@ public class ScheduleServiceImpl implements ScheduleService {
         List<ScheduleResponseDto.GetAll> response =  new ArrayList<>();
 
         for (Schedule schedule : schedules) {
-            response.add(new ScheduleResponseDto.GetAll(schedule));
+            int commentCount = commentRepository.countBySchedule_Id(schedule.getId());
+            response.add(new ScheduleResponseDto.GetAll(schedule,commentCount));
         }
 
         return response;

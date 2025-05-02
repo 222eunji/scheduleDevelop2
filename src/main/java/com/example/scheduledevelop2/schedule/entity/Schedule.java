@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.Formula;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,10 @@ public class Schedule extends BaseEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    @ColumnDefault("0")
-    private Long commentCount;
+//    @ColumnDefault("0")
+//    @Formula("(select count(*) from comment c where c.schedule_id = id")
+//    private Long commentCount;
+    // 이렇게 필드를 만들어버리면 comment에 변화가 있을 때 마다 쿼리가 한번 더 사용됨
 
 //    @OneToMany(mappedBy = "schedule")
 //    private List<Comment> comments = new ArrayList<>();

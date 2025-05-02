@@ -9,4 +9,6 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
         return findById(commentId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 댓글입니다.")); //todo: 예외 바꾸기
     }
 
+   int countBySchedule_Id(Long ScheduleId);
+
 }

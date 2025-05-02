@@ -29,13 +29,13 @@ public class ScheduleResponseDto {
         private final Long scheduleId;
         private final Long writerId;
         private final String name;
-        private final Long commentCount;
+        private final int commentCount;
 
-        public GetAll(Schedule schedule) {
+        public GetAll(Schedule schedule, int commentCount) {
             this.scheduleId = schedule.getId();
             this.writerId = schedule.getWriterId();
             this.name = schedule.getName();
-            this.commentCount = schedule.getCommentCount();
+            this.commentCount = commentCount;
 
         }
 
@@ -49,7 +49,7 @@ public class ScheduleResponseDto {
         private final Long writerId;
         private final String name;
         private final String content;
-        private final Long commentCount;
+//        private final Long commentCount;
         private final LocalDateTime createdAt;
         private final LocalDateTime updatedAt;
 
@@ -58,7 +58,7 @@ public class ScheduleResponseDto {
             this.writerId = schedule.getWriterId();
             this.name = schedule.getName();
             this.content = schedule.getContent();
-            this.commentCount = schedule.getCommentCount();
+//            this.commentCount = schedule.getCommentCount();
             this.createdAt = schedule.getCreatedAt();
             this.updatedAt = schedule.getUpdatedAt();
         }
