@@ -1,6 +1,10 @@
 package com.example.scheduledevelop2.comment.service;
 
+import com.example.scheduledevelop2.comment.dto.CommentDto;
+import com.example.scheduledevelop2.comment.entity.Comment;
 import com.example.scheduledevelop2.comment.repository.CommentRepository;
+import com.example.scheduledevelop2.schedule.entity.Schedule;
+import com.example.scheduledevelop2.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +13,16 @@ import org.springframework.stereotype.Service;
 public class CommentServiceImpl implements CommentService{
 
     public final CommentRepository commentRepository;
+    public final ScheduleRepository scheduleRepository;
 
+    // 댓글 생성
+    @Override
+    public CommentDto.Success createComment(Long scheduleId, CommentDto.Request dto) {
+
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(scheduleId);
+        Comment comment = new Comment(schedule, dto);
+        commentRepository.save(comment);
+
+        return new CommentDto.Success("댓글이 작성되었습니다.");
+    }
 }

@@ -16,7 +16,7 @@ public class CommentDto {
     @Getter
     @AllArgsConstructor
     public static class Success {
-        private String message;
+        private final String message;
     }
 
     @Getter

@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@DynamicInsert
 @Table(name = "schedules")
 public class Schedule extends BaseEntity {
 

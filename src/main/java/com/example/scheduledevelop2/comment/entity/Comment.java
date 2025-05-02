@@ -1,5 +1,6 @@
 package com.example.scheduledevelop2.comment.entity;
 
+import com.example.scheduledevelop2.comment.dto.CommentDto;
 import com.example.scheduledevelop2.common.BaseEntity;
 import com.example.scheduledevelop2.schedule.entity.Schedule;
 import jakarta.persistence.*;
@@ -22,4 +23,8 @@ public class Comment extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
+    public Comment(Schedule schedule, CommentDto.Request dto) {
+        this.schedule = schedule;
+        this.content = dto.getContent();
+    }
 }

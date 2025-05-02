@@ -12,17 +12,14 @@ public class ScheduleResponseDto {
     @Getter
     @AllArgsConstructor
     public static class Success{
-
         private final String message;
     }
 
     @Getter
     @AllArgsConstructor
     public static class Create{
-
         private final String message;
         private final Long scheduleId;
-
     }
 
     @Getter
