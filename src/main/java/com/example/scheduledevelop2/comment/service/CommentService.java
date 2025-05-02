@@ -6,4 +6,6 @@ public interface CommentService {
     CommentDto.Success createComment(Long scheduleId, CommentDto.Request dto);
 
     CommentDto.GetById getCommentById(Long commentId);
+
+    CommentDto.Success updateComment(Long commentId, CommentDto.Request dto);
 }

@@ -27,4 +27,8 @@ public class Comment extends BaseEntity {
         this.schedule = schedule;
         this.content = dto.getContent();
     }
+
+    public void update(CommentDto.Request dto) {
+        this.content = dto.getContent();
+    }
 }

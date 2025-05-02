@@ -7,6 +7,7 @@ import com.example.scheduledevelop2.schedule.entity.Schedule;
 import com.example.scheduledevelop2.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +34,16 @@ public class CommentServiceImpl implements CommentService{
         Comment comment = commentRepository.findByIdOrElseThrow(commentId);
 
         return new CommentDto.GetById(comment);
+    }
+
+    // 댓글 수정
+    @Override
+    @Transactional
+    public CommentDto.Success updateComment(Long commentId, CommentDto.Request dto) {
+
+        Comment comment = commentRepository.findByIdOrElseThrow(commentId);
+        comment.update(dto);
+
+        return new CommentDto.Success("댓글이 수정되었습니다.");
     }
 }
