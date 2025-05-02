@@ -54,6 +54,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return new ScheduleResponseDto.GetById(schedule);
     }
 
+    // 일정 수정
     @Override
     @Transactional
     public ScheduleResponseDto.Success updateSchedule(Long scheduleId, ScheduleRequestDto.Update dto) {
@@ -62,5 +63,15 @@ public class ScheduleServiceImpl implements ScheduleService {
         schedule.update(dto);
 
         return new ScheduleResponseDto.Success("일정이 수정되었습니다.");
+    }
+
+    // 일정 삭제
+    @Override
+    public ScheduleResponseDto.Success deleteSchedule(Long scheduleId) {
+
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(scheduleId);
+        scheduleRepository.delete(schedule);
+
+        return new ScheduleResponseDto.Success("일정이 삭제되었습니다.");
     }
 }

@@ -20,7 +20,6 @@ public class ScheduleController {
 
     /**
      * 일정 생성
-     * @param dto Id,제목,내용 받는 Dto
      */
     @PostMapping
     public ResponseEntity<ScheduleResponseDto.Create> createSchedule(@RequestBody ScheduleRequestDto.Create dto) {
@@ -39,7 +38,6 @@ public class ScheduleController {
 
     /**
      * 일정 단건 조회
-     * @param scheduleId 일정ID
      */
     @GetMapping("/{scheduleId}")
     public ResponseEntity<ScheduleResponseDto.GetById> getScheduleById(@PathVariable Long scheduleId) {
@@ -47,11 +45,21 @@ public class ScheduleController {
         return ResponseEntity.status(HttpStatus.OK).body(scheduleService.getScheduleById(scheduleId));
     }
 
-
+    /**
+     * 일정 수정
+     */
     @PatchMapping("/{scheduleId}")
     public ResponseEntity<ScheduleResponseDto.Success> updateSchedule(@PathVariable Long scheduleId, @RequestBody ScheduleRequestDto.Update dto) {
 
         return ResponseEntity.status(HttpStatus.OK).body(scheduleService.updateSchedule(scheduleId, dto));
     }
 
+    /**
+     * 일정 삭제
+     */
+    @DeleteMapping("/{scheduleId}")
+    public ResponseEntity<ScheduleResponseDto.Success> deleteSchedule(@PathVariable Long scheduleId) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(scheduleService.deleteSchedule(scheduleId));
+    }
 }
