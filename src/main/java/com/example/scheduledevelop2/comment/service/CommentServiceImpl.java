@@ -46,4 +46,14 @@ public class CommentServiceImpl implements CommentService{
 
         return new CommentDto.Success("댓글이 수정되었습니다.");
     }
+
+    // 댓글 삭제
+    @Override
+    public CommentDto.Success deleteComment(Long commentId) {
+
+        Comment comment = commentRepository.findByIdOrElseThrow(commentId);
+        commentRepository.delete(comment);
+
+        return new CommentDto.Success("댓글이 삭제되었습니다.");
+    }
 }

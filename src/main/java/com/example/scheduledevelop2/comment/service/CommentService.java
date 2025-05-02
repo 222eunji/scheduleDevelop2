@@ -8,4 +8,6 @@ public interface CommentService {
     CommentDto.GetById getCommentById(Long commentId);
 
     CommentDto.Success updateComment(Long commentId, CommentDto.Request dto);
+
+    CommentDto.Success deleteComment(Long commentId);
 }
