@@ -47,4 +47,11 @@ public class ScheduleController {
         return ResponseEntity.status(HttpStatus.OK).body(scheduleService.getScheduleById(scheduleId));
     }
 
+
+    @PatchMapping("/{scheduleId}")
+    public ResponseEntity<ScheduleResponseDto.Success> updateSchedule(@PathVariable Long scheduleId, @RequestBody ScheduleRequestDto.Update dto) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(scheduleService.updateSchedule(scheduleId, dto));
+    }
+
 }

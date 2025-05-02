@@ -17,7 +17,6 @@ public class ScheduleRequestDto {
 
     @Getter
     @AllArgsConstructor
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Update{
 
         private String name;

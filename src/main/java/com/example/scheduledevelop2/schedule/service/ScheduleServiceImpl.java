@@ -6,6 +6,7 @@ import com.example.scheduledevelop2.schedule.entity.Schedule;
 import com.example.scheduledevelop2.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         Schedule schedule = new Schedule(dto);
         scheduleRepository.save(schedule);
 
-        return new ScheduleResponseDto.Create("스케쥴이 생성되엇습니다.", schedule.getId());
+        return new ScheduleResponseDto.Create("일정이 생성되었습니다.", schedule.getId());
     }
 
     // 전체 일정 조회
@@ -51,5 +52,15 @@ public class ScheduleServiceImpl implements ScheduleService {
         Schedule schedule = scheduleRepository.findByIdOrElseThrow(scheduleId);
 
         return new ScheduleResponseDto.GetById(schedule);
+    }
+
+    @Override
+    @Transactional
+    public ScheduleResponseDto.Success updateSchedule(Long scheduleId, ScheduleRequestDto.Update dto) {
+
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(scheduleId);
+        schedule.update(dto);
+
+        return new ScheduleResponseDto.Success("일정이 수정되었습니다.");
     }
 }

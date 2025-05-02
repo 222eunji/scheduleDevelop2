@@ -36,5 +36,10 @@ public class Schedule extends BaseEntity {
         this.content = dto.getContent();
     }
 
+    public void update(ScheduleRequestDto.Update dto) {
+        if(dto.getName() != null) this.name = dto.getName();
+        if(dto.getContent() != null) this.content = dto.getContent();
+    }
+
 
 }

@@ -11,4 +11,6 @@ public interface ScheduleService {
     List<ScheduleResponseDto.GetAll> getAllSchedule();
 
     ScheduleResponseDto.GetById getScheduleById(Long scheduleId);
+
+    ScheduleResponseDto.Success updateSchedule(Long scheduleId, ScheduleRequestDto.Update dto);
 }
