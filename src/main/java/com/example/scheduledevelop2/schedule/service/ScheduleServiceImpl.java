@@ -32,13 +32,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 //        boolean exists = scheduleRepository.count() == 0;
         // count 말고 isnotnull과 같이 존재 여부만 확인하고 싶다.
-        // TODO: 0일때 조회 목록 없음 예외처리하기
+        // TODO: 일정 0일때 조회 목록 없음 예외처리하기
 
         List<Schedule> schedules = scheduleRepository.findAll();
         List<ScheduleResponseDto.GetAll> response =  new ArrayList<>();
 
-        for (Schedule sche : schedules) {
-            response.add(new ScheduleResponseDto.GetAll(sche.getId(),sche.getWriterId(), sche.getName(), sche.getCommentCount()));
+        for (Schedule schedule : schedules) {
+            response.add(new ScheduleResponseDto.GetAll(schedule));
         }
 
         return response;

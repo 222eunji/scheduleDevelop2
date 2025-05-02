@@ -1,7 +1,9 @@
 package com.example.scheduledevelop2.schedule.dto;
 
+import com.example.scheduledevelop2.schedule.entity.Schedule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -31,6 +33,14 @@ public class ScheduleResponseDto {
         private final Long writerId;
         private final String name;
         private final Long commentCount;
+
+        public GetAll(Schedule schedule) {
+            this.scheduleId = schedule.getId();
+            this.writerId = schedule.getWriterId();
+            this.name = schedule.getName();
+            this.commentCount = schedule.getCommentCount();
+
+        }
 
     }
 
