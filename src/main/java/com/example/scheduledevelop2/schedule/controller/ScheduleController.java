@@ -37,5 +37,14 @@ public class ScheduleController {
         return ResponseEntity.status(HttpStatus.OK).body(scheduleService.getAllSchedule());
     }
 
+    /**
+     * 일정 단건 조회
+     * @param scheduleId 일정ID
+     */
+    @GetMapping("/{scheduleId}")
+    public ResponseEntity<ScheduleResponseDto.GetById> getScheduleById(@PathVariable Long scheduleId) {
+        
+        return ResponseEntity.status(HttpStatus.OK).body(scheduleService.getScheduleById(scheduleId));
+    }
 
 }

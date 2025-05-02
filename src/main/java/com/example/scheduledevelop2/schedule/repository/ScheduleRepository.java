@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
+    default Schedule findByIdOrElseThrow(Long scheduleId) {
+        return findById(scheduleId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 일정입니다.")); //todo: 예외 바꾸기
+    }
 
 }

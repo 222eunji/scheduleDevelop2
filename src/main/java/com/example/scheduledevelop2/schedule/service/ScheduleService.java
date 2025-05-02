@@ -9,4 +9,6 @@ public interface ScheduleService {
     ScheduleResponseDto.Create createSchedule(ScheduleRequestDto.Create dto);
 
     List<ScheduleResponseDto.GetAll> getAllSchedule();
+
+    ScheduleResponseDto.GetById getScheduleById(Long scheduleId);
 }

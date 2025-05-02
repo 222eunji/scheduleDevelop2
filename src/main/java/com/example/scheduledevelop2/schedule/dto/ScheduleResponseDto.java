@@ -51,9 +51,21 @@ public class ScheduleResponseDto {
         private final Long scheduleId;
         private final Long writerId;
         private final String name;
+        private final String content;
         private final Long commentCount;
         private final LocalDateTime createdAt;
         private final LocalDateTime updatedAt;
+
+        public GetById(Schedule schedule) {
+            this.scheduleId = schedule.getId();
+            this.writerId = schedule.getWriterId();
+            this.name = schedule.getName();
+            this.content = schedule.getContent();
+            this.commentCount = schedule.getCommentCount();
+            this.createdAt = schedule.getCreatedAt();
+            this.updatedAt = schedule.getUpdatedAt();
+        }
+
     }
 
 }

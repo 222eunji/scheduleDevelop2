@@ -43,4 +43,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         return response;
     }
+
+    // 일정 단건 조회
+    @Override
+    public ScheduleResponseDto.GetById getScheduleById(Long scheduleId) {
+
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(scheduleId);
+
+        return new ScheduleResponseDto.GetById(schedule);
+    }
 }
