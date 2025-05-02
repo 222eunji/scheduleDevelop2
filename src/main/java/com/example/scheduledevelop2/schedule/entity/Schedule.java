@@ -1,22 +1,17 @@
 package com.example.scheduledevelop2.schedule.entity;
 
+import com.example.scheduledevelop2.comment.entity.Comment;
 import com.example.scheduledevelop2.common.BaseEntity;
 import com.example.scheduledevelop2.schedule.dto.ScheduleRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.Formula;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
-@DynamicInsert
 @Table(name = "schedules")
 public class Schedule extends BaseEntity {
 
@@ -37,8 +32,9 @@ public class Schedule extends BaseEntity {
 //    private Long commentCount;
     // 이렇게 필드를 만들어버리면 comment에 변화가 있을 때 마다 쿼리가 한번 더 사용됨
 
-//    @OneToMany(mappedBy = "schedule")
-//    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OrderBy("createdAt asc")
+    private List<Comment> comments;
 
     public Schedule(ScheduleRequestDto.Create dto) {
         this.writerId = dto.getWriterId();

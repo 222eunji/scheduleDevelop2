@@ -38,4 +38,14 @@ public class CommentDto {
         }
 
     }
+
+    // 일정 단건 조회 시 포함되는 댓글 리스트 Dto 변환 용도
+    @Getter
+    @AllArgsConstructor
+    public static class GetByStore {
+        private Long commentId;
+        private String content;
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
+    }
 }

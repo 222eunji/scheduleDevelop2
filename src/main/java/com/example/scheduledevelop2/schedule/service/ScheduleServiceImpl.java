@@ -1,5 +1,6 @@
 package com.example.scheduledevelop2.schedule.service;
 
+import com.example.scheduledevelop2.comment.entity.Comment;
 import com.example.scheduledevelop2.comment.repository.CommentRepository;
 import com.example.scheduledevelop2.schedule.dto.ScheduleRequestDto;
 import com.example.scheduledevelop2.schedule.dto.ScheduleResponseDto;
@@ -41,8 +42,8 @@ public class ScheduleServiceImpl implements ScheduleService {
         List<ScheduleResponseDto.GetAll> response =  new ArrayList<>();
 
         for (Schedule schedule : schedules) {
-            int commentCount = commentRepository.countBySchedule_Id(schedule.getId());
-            response.add(new ScheduleResponseDto.GetAll(schedule,commentCount));
+            Long commentCount = commentRepository.countBySchedule_Id(schedule.getId());
+            response.add(new ScheduleResponseDto.GetAll(schedule, commentCount));
         }
 
         return response;
@@ -53,8 +54,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     public ScheduleResponseDto.GetById getScheduleById(Long scheduleId) {
 
         Schedule schedule = scheduleRepository.findByIdOrElseThrow(scheduleId);
+        Long commentCount = commentRepository.countBySchedule_Id(schedule.getId());
 
-        return new ScheduleResponseDto.GetById(schedule);
+        return new ScheduleResponseDto.GetById(schedule, commentCount);
     }
 
     // 일정 수정
