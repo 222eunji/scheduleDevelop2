@@ -6,7 +6,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,6 +32,9 @@ public class Schedule extends BaseEntity {
 
     @ColumnDefault("0")
     private Long commentCount;
+
+//    @OneToMany(mappedBy = "schedule")
+//    private List<Comment> comments = new ArrayList<>();
 
     public Schedule(ScheduleRequestDto.Create dto) {
         this.writerId = dto.getWriterId();
