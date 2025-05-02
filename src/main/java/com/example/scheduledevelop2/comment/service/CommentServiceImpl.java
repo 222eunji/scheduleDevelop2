@@ -25,4 +25,13 @@ public class CommentServiceImpl implements CommentService{
 
         return new CommentDto.Success("댓글이 작성되었습니다.");
     }
+
+    // 댓글 조회
+    @Override
+    public CommentDto.GetById getCommentById(Long commentId) {
+
+        Comment comment = commentRepository.findByIdOrElseThrow(commentId);
+
+        return new CommentDto.GetById(comment);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.scheduledevelop2.comment.dto;
 
+import com.example.scheduledevelop2.comment.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -27,5 +28,14 @@ public class CommentDto {
         private Long scheduleId;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
+
+        public GetById(Comment comment) {
+            this.commentId = comment.getId();
+            this.content = comment.getContent();
+            this.scheduleId = comment.getSchedule().getId();
+            this.createdAt = comment.getCreatedAt();
+            this.updatedAt = comment.getUpdatedAt();
+        }
+
     }
 }
