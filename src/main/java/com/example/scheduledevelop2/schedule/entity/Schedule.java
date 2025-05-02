@@ -11,7 +11,6 @@ import org.hibernate.annotations.DynamicInsert;
 @Entity
 @Getter
 @NoArgsConstructor
-@DynamicInsert
 @Table(name = "schedules")
 public class Schedule extends BaseEntity {
 
