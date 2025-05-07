@@ -5,7 +5,6 @@ import com.example.scheduledevelop2.comment.entity.Comment;
 import com.example.scheduledevelop2.schedule.entity.Schedule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class ScheduleResponseDto {
         private final String name;
         private final String content;
         private final Long commentCount;
-        private final List<CommentDto.GetByStore> comments;
+        private final List<CommentDto.Detail> comments;
         private final LocalDateTime createdAt;
         private final LocalDateTime updatedAt;
 
@@ -68,9 +67,9 @@ public class ScheduleResponseDto {
             this.updatedAt = schedule.getUpdatedAt();
 
             // comment 필드 리스트 타입을 DTO 클래스로 변환해서 엔티티간 무한 참조 방지
-            List<CommentDto.GetByStore> commentList = new ArrayList<>();
+            List<CommentDto.Detail> commentList = new ArrayList<>();
             for (Comment comment : schedule.getComments()) {
-                CommentDto.GetByStore dto = new CommentDto.GetByStore(
+                CommentDto.Detail dto = new CommentDto.Detail(
                         comment.getId(),
                         comment.getContent(),
                         comment.getCreatedAt(),

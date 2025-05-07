@@ -40,12 +40,20 @@ public class CommentDto {
     }
 
     // 일정 단건 조회 시 포함되는 댓글 리스트 Dto 변환 용도
+    // 대댓글 조회시 원댓글 조회용
     @Getter
     @AllArgsConstructor
-    public static class GetByStore {
+    public static class Detail {
         private Long commentId;
         private String content;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
+
+        public Detail(Comment comment) {
+            this.commentId = comment.getId();
+            this.content = comment.getContent();
+            this.createdAt = comment.getCreatedAt();
+            this.updatedAt = comment.getUpdatedAt();
+        }
     }
 }

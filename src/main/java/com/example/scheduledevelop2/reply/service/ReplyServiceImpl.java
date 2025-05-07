@@ -31,16 +31,15 @@ public class ReplyServiceImpl implements ReplyService {
         return new ReplyDto.Success("답글이 작성되었습니다.");
     }
 
+    // 대댓글 조회
     @Override
     public ReplyDto.GetById getReplyById(Long replyId) {
-        return null;
-    }
 
-    // 대댓글 조회 //Todo 부모댓글 하위에 정렬
-//    @Override
-//    public ReplyDto.GetById getReplyById(Long commentId) {
-//        return null;
-//    }
+        Reply reply = replyRepository.findByIdOrElseThrow(replyId);
+//        Comment comment = commentRepository.findByIdOrElseThrow(reply.getComment().getId());
+
+        return new ReplyDto.GetById(reply, reply.getComment());
+    }
 
     // 대댓글 수정
     @Override

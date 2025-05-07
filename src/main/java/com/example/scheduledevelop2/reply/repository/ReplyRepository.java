@@ -9,8 +9,7 @@ import java.util.List;
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
 
     default Reply findByIdOrElseThrow(Long replyId) {
-        return findById(replyId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 댓글입니다.")); //todo: 예외 바꾸기
+        return findById(replyId).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 답글입니다.")); //todo: 예외 바꾸기
     }
 
-//    Long countBySchedule_Id(Long ScheduleId);
 }
