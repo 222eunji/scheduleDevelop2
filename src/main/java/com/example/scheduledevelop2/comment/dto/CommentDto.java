@@ -1,6 +1,7 @@
 package com.example.scheduledevelop2.comment.dto;
 
 import com.example.scheduledevelop2.comment.entity.Comment;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -26,7 +27,9 @@ public class CommentDto {
         private Long commentId;
         private String content;
         private Long scheduleId;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime createdAt;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime updatedAt;
 
         public GetById(Comment comment) {
@@ -46,7 +49,9 @@ public class CommentDto {
     public static class Detail {
         private Long commentId;
         private String content;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime createdAt;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime updatedAt;
 
         public Detail(Comment comment) {
