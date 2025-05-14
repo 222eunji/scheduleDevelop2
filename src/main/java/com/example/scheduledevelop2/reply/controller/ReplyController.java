@@ -21,7 +21,7 @@ public class ReplyController {
      * @param dto 대댓글 내용
      * @return 응답 성공 메세지
      */
-    @PostMapping("/{commentId}/reply")
+    @PostMapping("/{commentId}/replies")
     public ResponseEntity<ReplyDto.Success> createReply (@PathVariable Long commentId,
                                                              @RequestBody ReplyDto.Request dto) {
 
@@ -33,7 +33,7 @@ public class ReplyController {
      * @param replyId 대댓글 ID
      * @return 댓글 정보(댓글ID, 내용, 일정ID, 생성일, 수정일) -> 원댓글ID, 원댓글 내용, 대댓글ID, 대댓글 내용
      */
-    @GetMapping("/reply/{replyId}")
+    @GetMapping("/replies/{replyId}")
     public ResponseEntity<ReplyDto.GetById> getReplyById (@PathVariable Long replyId) {
 
         return ResponseEntity.status(HttpStatus.OK).body(replyService.getReplyById(replyId));
@@ -45,7 +45,7 @@ public class ReplyController {
      * @param dto 대댓글 내용
      * @return 응답 성공 메세지
      */
-    @PatchMapping("/reply/{replyId}")
+    @PatchMapping("/replies/{replyId}")
     public ResponseEntity<ReplyDto.Success> updateReply (@PathVariable Long replyId,
                                                              @RequestBody ReplyDto.Request dto) {
 
@@ -57,7 +57,7 @@ public class ReplyController {
      * @param replyId 대댓글 ID
      * @return 응답 성공 메세지
      */
-    @DeleteMapping("/reply/{replyId}")
+    @DeleteMapping("/replies/{replyId}")
     public ResponseEntity<ReplyDto.Success> deleteReply (@PathVariable Long replyId) {
 
         return ResponseEntity.status(HttpStatus.OK).body(replyService.deleteReply(replyId));

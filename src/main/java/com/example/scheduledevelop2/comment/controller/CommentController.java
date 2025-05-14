@@ -20,7 +20,7 @@ public class CommentController {
      * @param dto 댓글 내용
      * @return 응답 성공 메세지
      */
-    @PostMapping("/{scheduleId}/comment")
+    @PostMapping("/{scheduleId}/comments")
     public ResponseEntity<CommentDto.Success> createComment (@PathVariable Long scheduleId,
                                                              @RequestBody CommentDto.Request dto) {
 
@@ -32,7 +32,7 @@ public class CommentController {
      * @param commentId
      * @return 댓글 정보(댓글ID, 내용, 일정ID, 생성일, 수정일)
      */
-    @GetMapping("/comment/{commentId}")
+    @GetMapping("/comments/{commentId}")
     public ResponseEntity<CommentDto.GetById> getCommentById (@PathVariable Long commentId) {
 
         return ResponseEntity.status(HttpStatus.OK).body(commentService.getCommentById(commentId));
@@ -44,7 +44,7 @@ public class CommentController {
      * @param dto 댓글 내용
      * @return 응답 성공 메세지
      */
-    @PatchMapping("/comment/{commentId}")
+    @PatchMapping("/comments/{commentId}")
     public ResponseEntity<CommentDto.Success> updateComment (@PathVariable Long commentId,
                                                              @RequestBody CommentDto.Request dto) {
 
@@ -56,7 +56,7 @@ public class CommentController {
      * @param commentId
      * @return 응답 성공 메세지
      */
-    @DeleteMapping("/comment/{commentId}")
+    @DeleteMapping("/comments/{commentId}")
     public ResponseEntity<CommentDto.Success> deleteComment (@PathVariable Long commentId) {
 
         return ResponseEntity.status(HttpStatus.OK).body(commentService.deleteComment(commentId));
