@@ -25,6 +25,8 @@
 ![screencapture-notion-so-teamsparta-API-ERD-1f22dc3ef5148130bed3f4bc8274220a-2025-05-15-00_00_09](https://github.com/user-attachments/assets/86817be6-eb59-4257-8bca-423b32abc6c6)
  
 ## 2️⃣ 기능 소개
+### [API 동작 캡쳐본](https://github.com/222eunji/scheduleDevelop2/wiki/API-%EB%8F%99%EC%9E%91-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%A7%A8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B2%B0%EA%B3%BC)
+: Wiki로 연결됩니다.
 ### **🧩 SCHEDULE CRUD**
 - **일정 생성**: title, content, userId를 입력받아 일정을 생성합니다.
 - **전체 일정 조회**: 등록된 전체 일정의 ID, 작성자ID, 제목, 댓글수를 조회합니다. 일정이 없을 시 빈 리스트가 반환됩니다.
