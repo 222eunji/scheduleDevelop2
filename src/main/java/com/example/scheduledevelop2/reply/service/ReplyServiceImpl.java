@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
 
-    public final ReplyRepository replyRepository;
-    public final CommentRepository commentRepository;
+    private final ReplyRepository replyRepository;
+    private final CommentRepository commentRepository;
 
     // 대댓글 생성
     @Override

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ReplyController {
 
-    public final ReplyService replyService;
+    private final ReplyService replyService;
 
     /**
      * 대댓글 생성

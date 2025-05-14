@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService{
 
-    public final CommentRepository commentRepository;
-    public final ScheduleRepository scheduleRepository;
+    private final CommentRepository commentRepository;
+    private final ScheduleRepository scheduleRepository;
 
     // 댓글 생성
     @Override

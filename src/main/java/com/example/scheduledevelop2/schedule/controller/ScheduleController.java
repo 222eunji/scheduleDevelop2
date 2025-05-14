@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/schedule")
 public class ScheduleController {
 
-    final ScheduleService scheduleService;
+    private final ScheduleService scheduleService;
 
     /**
      * 일정 생성

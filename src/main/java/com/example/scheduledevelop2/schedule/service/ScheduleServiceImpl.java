@@ -17,8 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScheduleServiceImpl implements ScheduleService {
 
-    public final ScheduleRepository scheduleRepository;
-    public final CommentRepository commentRepository;
+    private final ScheduleRepository scheduleRepository;
+    private final CommentRepository commentRepository;
 
     // 일정 생성
     @Override

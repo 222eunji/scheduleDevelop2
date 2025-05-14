@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CommentController {
 
-    public final CommentService commentService;
+    private final CommentService commentService;
 
     /**
      * 댓글 생성
